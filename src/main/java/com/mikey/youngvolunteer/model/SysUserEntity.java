@@ -6,7 +6,7 @@ import javax.persistence.*;
  * @Program: Ped_Moni_Gen
  * @Author: 麦奇
  * @Email： 1625017540@qq.com
- * @Create: 2019-06-02 15:14
+ * @Create: 2019-06-18 15:52
  * @Describe：
  **/
 @Entity
@@ -18,6 +18,9 @@ public class SysUserEntity {
     private String userName;
     private Integer roleType;
     private int userAvailable;
+    private SysAdminEntity admin;
+    private SysVolunteerEntity volunteer;
+    private AssociationMemberEntity association_member;
 
     @Id
     @Column(name = "user_id", nullable = false)
@@ -108,15 +111,30 @@ public class SysUserEntity {
         return result;
     }
 
-    @Override
-    public String toString() {
-        return "SysUserEntity{" +
-                "userId=" + userId +
-                ", loginAccount='" + loginAccount + '\'' +
-                ", loginPassword='" + loginPassword + '\'' +
-                ", userName='" + userName + '\'' +
-                ", roleType=" + roleType +
-                ", userAvailable=" + userAvailable +
-                '}';
+    @OneToOne
+    public SysAdminEntity getAdmin() {
+        return admin;
+    }
+
+    public void setAdmin(SysAdminEntity admin) {
+        this.admin = admin;
+    }
+
+    @OneToOne
+    public SysVolunteerEntity getVolunteer() {
+        return volunteer;
+    }
+
+    public void setVolunteer(SysVolunteerEntity volunteer) {
+        this.volunteer = volunteer;
+    }
+
+    @OneToOne
+    public AssociationMemberEntity getAssociation_member() {
+        return association_member;
+    }
+
+    public void setAssociation_member(AssociationMemberEntity association_member) {
+        this.association_member = association_member;
     }
 }

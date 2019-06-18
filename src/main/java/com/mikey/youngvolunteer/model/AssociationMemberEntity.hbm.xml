@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="com.mikey.youngvolunteer.model.AssociationMemberEntity" table="association_member" schema="young_volunteer">
+        <id name="id">
+            <column name="id" sql-type="int(11)"/>
+        </id>
+        <property name="memberCode">
+            <column name="member_code" sql-type="varchar(255)"/>
+        </property>
+        <property name="memberName">
+            <column name="member_name" sql-type="varchar(255)"/>
+        </property>
+        <one-to-one name="user" class="com.mikey.youngvolunteer.model.SysUserEntity"/>
+        <one-to-one name="college" class="com.mikey.youngvolunteer.model.CollegesEntity"/>
+    </class>
+</hibernate-mapping>

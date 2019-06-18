@@ -1,6 +1,48 @@
 {
 	"contentManagement": [
 		{
+			"title": "学院管理",
+			"icon": "&#xe612;",
+			"href": "",
+			"spread": false,
+			"children": [
+				{
+					"title": "学院列表",
+					"icon": "&#xe612;",
+					"href": "/YoungVolunteer_war/page/system/colleges/collegesList.html",
+					"spread": false
+				}
+			]
+		},
+		{
+			"title": "志愿者协会管理",
+			"icon": "&#xe612;",
+			"href": "",
+			"spread": false,
+			"children": [
+				{
+					"title": "协会列表",
+					"icon": "&#xe612;",
+					"href": "/YoungVolunteer_war/page/system/association/associationList.html",
+					"spread": false
+				}
+			]
+		},
+		{
+			"title": "志愿者成员管理",
+			"icon": "&#xe612;",
+			"href": "",
+			"spread": false,
+			"children": [
+				{
+					"title": "成员列表",
+					"icon": "&#xe612;",
+					"href": "/YoungVolunteer_war/page/system/member/memberList.html",
+					"spread": false
+				}
+			]
+		},
+		{
 			"title": "志愿者管理",
 			"icon": "&#xe612;",
 			"href": "",

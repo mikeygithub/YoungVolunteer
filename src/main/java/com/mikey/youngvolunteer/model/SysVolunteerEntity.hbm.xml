@@ -32,6 +32,6 @@
         <property name="volunteerSex">
             <column name="volunteer_sex" sql-type="int(11)" not-null="true"/>
         </property>
-        <one-to-one name="user" class="com.mikey.youngvolunteer.model.SysUserEntity"/>
+        <one-to-one name="user" class="com.mikey.youngvolunteer.SysUserEntity"/>
     </class>
 </hibernate-mapping>

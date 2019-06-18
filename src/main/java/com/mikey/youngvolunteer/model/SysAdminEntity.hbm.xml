@@ -26,9 +26,6 @@
         <property name="adminSex">
             <column name="admin_sex" sql-type="int(11)" not-null="true"/>
         </property>
-        <property name="loginPassword">
-            <column name="login_password" sql-type="varchar(255)" not-null="true"/>
-        </property>
         <one-to-one name="user" class="com.mikey.youngvolunteer.model.SysUserEntity"/>
     </class>
 </hibernate-mapping>

@@ -27,5 +27,23 @@
 				<param name="root">r</param>
 			</result>
 		</action>
+		<!--学院-->
+		<action name="colleges_*" class="com.mikey.youngvolunteer.action.colleges.CollegesAction" method="{1}">
+			<result name="success" type="json">
+				<param name="root">r</param>
+			</result>
+		</action>
+		<!--协会-->
+		<action name="association_*" class="com.mikey.youngvolunteer.action.association.AssociationAction" method="{1}">
+			<result name="success" type="json">
+				<param name="root">r</param>
+			</result>
+		</action>
+		<!--成员-->
+		<action name="member_*" class="com.mikey.youngvolunteer.action.member.MemberAction" method="{1}">
+			<result name="success" type="json">
+				<param name="root">r</param>
+			</result>
+		</action>
 	</package>
 </struts>    

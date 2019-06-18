@@ -6,7 +6,7 @@ import javax.persistence.*;
  * @Program: Ped_Moni_Gen
  * @Author: 麦奇
  * @Email： 1625017540@qq.com
- * @Create: 2019-06-02 15:14
+ * @Create: 2019-06-18 15:52
  * @Describe：
  **/
 @Entity
@@ -19,7 +19,6 @@ public class SysAdminEntity {
     private String adminName;
     private String adminPhone;
     private Integer adminSex;
-    private String loginPassword;
     private SysUserEntity user;
 
     @Id
@@ -92,16 +91,6 @@ public class SysAdminEntity {
         this.adminSex = adminSex;
     }
 
-    @Basic
-    @Column(name = "login_password", nullable = true, length = 255)
-    public String getLoginPassword() {
-        return loginPassword;
-    }
-
-    public void setLoginPassword(String loginPassword) {
-        this.loginPassword = loginPassword;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -116,8 +105,6 @@ public class SysAdminEntity {
         if (adminName != null ? !adminName.equals(that.adminName) : that.adminName != null) return false;
         if (adminPhone != null ? !adminPhone.equals(that.adminPhone) : that.adminPhone != null) return false;
         if (adminSex != null ? !adminSex.equals(that.adminSex) : that.adminSex != null) return false;
-        if (loginPassword != null ? !loginPassword.equals(that.loginPassword) : that.loginPassword != null)
-            return false;
 
         return true;
     }
@@ -131,31 +118,15 @@ public class SysAdminEntity {
         result = 31 * result + (adminName != null ? adminName.hashCode() : 0);
         result = 31 * result + (adminPhone != null ? adminPhone.hashCode() : 0);
         result = 31 * result + (adminSex != null ? adminSex.hashCode() : 0);
-        result = 31 * result + (loginPassword != null ? loginPassword.hashCode() : 0);
         return result;
     }
 
-    @OneToOne
+    @OneToOne(mappedBy = "admin")
     public SysUserEntity getUser() {
         return user;
     }
 
     public void setUser(SysUserEntity user) {
         this.user = user;
-    }
-
-    @Override
-    public String toString() {
-        return "SysAdminEntity{" +
-                "adminId=" + adminId +
-                ", loginName='" + loginName + '\'' +
-                ", adminCode='" + adminCode + '\'' +
-                ", adminEmail='" + adminEmail + '\'' +
-                ", adminName='" + adminName + '\'' +
-                ", adminPhone='" + adminPhone + '\'' +
-                ", adminSex=" + adminSex +
-                ", loginPassword='" + loginPassword + '\'' +
-                ", user=" + user +
-                '}';
     }
 }

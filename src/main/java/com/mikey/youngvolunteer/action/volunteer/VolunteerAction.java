@@ -60,9 +60,8 @@ public class VolunteerAction extends ActionSupport implements ModelDriven<SysVol
         sysUserEntity.setRoleType(3);
         sysUserEntity.setUserName(sysVolunteerEntity.getVolunteerName());
         sysUserEntity.setUserAvailable(1);
-        sysUserService.saveUser(sysUserEntity);
 
-
+        sysVolunteerEntity.setUser(sysUserEntity);
         logger.info("日期："+volunteerJoinTimes);
         Date date = DateUtil.string2Date(volunteerJoinTimes,"yyyy-MM-dd");
         sysVolunteerEntity.setVolunteerId(sysUserEntity.getUserId());

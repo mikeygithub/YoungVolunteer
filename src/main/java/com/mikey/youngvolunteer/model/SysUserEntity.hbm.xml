@@ -23,5 +23,8 @@
         <property name="userAvailable">
             <column name="user_available" sql-type="int(2)"/>
         </property>
+        <one-to-one name="admin" class="com.mikey.youngvolunteer.model.SysAdminEntity"/>
+        <one-to-one name="volunteer" class="com.mikey.youngvolunteer.model.SysVolunteerEntity"/>
+        <one-to-one name="association_member" class="com.mikey.youngvolunteer.AssociationMemberEntity"/>
     </class>
 </hibernate-mapping>

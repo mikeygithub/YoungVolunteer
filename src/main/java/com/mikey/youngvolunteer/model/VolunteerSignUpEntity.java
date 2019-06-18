@@ -1,12 +1,13 @@
 package com.mikey.youngvolunteer.model;
 
 import javax.persistence.*;
+import java.sql.Timestamp;
 
 /**
  * @Program: Ped_Moni_Gen
  * @Author: 麦奇
  * @Email： 1625017540@qq.com
- * @Create: 2019-06-02 15:14
+ * @Create: 2019-06-18 15:52
  * @Describe：
  **/
 @Entity
@@ -16,11 +17,11 @@ public class VolunteerSignUpEntity {
     private Integer signIn;
     private Double volunteerScore;
     private String volunteerId;
-    private String volunteerName;
     private String activityId;
     private String activityName;
-
-
+    private String volunteerName;
+    private Timestamp signInTime;
+    private Timestamp signUpTime;
 
     @Id
     @Column(name = "sign_up_id", nullable = false)
@@ -71,23 +72,45 @@ public class VolunteerSignUpEntity {
     public void setActivityId(String activityId) {
         this.activityId = activityId;
     }
+
     @Basic
     @Column(name = "activity_name", nullable = true, length = 255)
     public String getActivityName() {
         return activityName;
     }
-    @Basic
-    @Column(name = "volunteer_name", nullable = true, length = 255)
+
     public void setActivityName(String activityName) {
         this.activityName = activityName;
     }
 
+    @Basic
+    @Column(name = "volunteerName", nullable = true, length = 255)
     public String getVolunteerName() {
         return volunteerName;
     }
 
     public void setVolunteerName(String volunteerName) {
         this.volunteerName = volunteerName;
+    }
+
+    @Basic
+    @Column(name = "sign_in_time", nullable = true)
+    public Timestamp getSignInTime() {
+        return signInTime;
+    }
+
+    public void setSignInTime(Timestamp signInTime) {
+        this.signInTime = signInTime;
+    }
+
+    @Basic
+    @Column(name = "sign_up_time", nullable = true)
+    public Timestamp getSignUpTime() {
+        return signUpTime;
+    }
+
+    public void setSignUpTime(Timestamp signUpTime) {
+        this.signUpTime = signUpTime;
     }
 
     @Override
@@ -103,21 +126,13 @@ public class VolunteerSignUpEntity {
             return false;
         if (volunteerId != null ? !volunteerId.equals(that.volunteerId) : that.volunteerId != null) return false;
         if (activityId != null ? !activityId.equals(that.activityId) : that.activityId != null) return false;
+        if (activityName != null ? !activityName.equals(that.activityName) : that.activityName != null) return false;
+        if (volunteerName != null ? !volunteerName.equals(that.volunteerName) : that.volunteerName != null)
+            return false;
+        if (signInTime != null ? !signInTime.equals(that.signInTime) : that.signInTime != null) return false;
+        if (signUpTime != null ? !signUpTime.equals(that.signUpTime) : that.signUpTime != null) return false;
 
         return true;
-    }
-
-    @Override
-    public String toString() {
-        return "VolunteerSignUpEntity{" +
-                "signUpId=" + signUpId +
-                ", signIn=" + signIn +
-                ", volunteerScore=" + volunteerScore +
-                ", volunteerId='" + volunteerId + '\'' +
-                ", volunteerName='" + volunteerName + '\'' +
-                ", activityId='" + activityId + '\'' +
-                ", activityName='" + activityName + '\'' +
-                '}';
     }
 
     @Override
@@ -127,6 +142,10 @@ public class VolunteerSignUpEntity {
         result = 31 * result + (volunteerScore != null ? volunteerScore.hashCode() : 0);
         result = 31 * result + (volunteerId != null ? volunteerId.hashCode() : 0);
         result = 31 * result + (activityId != null ? activityId.hashCode() : 0);
+        result = 31 * result + (activityName != null ? activityName.hashCode() : 0);
+        result = 31 * result + (volunteerName != null ? volunteerName.hashCode() : 0);
+        result = 31 * result + (signInTime != null ? signInTime.hashCode() : 0);
+        result = 31 * result + (signUpTime != null ? signUpTime.hashCode() : 0);
         return result;
     }
 }

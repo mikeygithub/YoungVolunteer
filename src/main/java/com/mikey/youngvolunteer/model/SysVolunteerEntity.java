@@ -7,7 +7,7 @@ import java.sql.Date;
  * @Program: Ped_Moni_Gen
  * @Author: 麦奇
  * @Email： 1625017540@qq.com
- * @Create: 2019-06-02 15:14
+ * @Create: 2019-06-18 15:52
  * @Describe：
  **/
 @Entity
@@ -156,29 +156,12 @@ public class SysVolunteerEntity {
         return result;
     }
 
-    @OneToOne
+    @OneToOne(mappedBy = "volunteer")
     public SysUserEntity getUser() {
         return user;
     }
 
     public void setUser(SysUserEntity user) {
         this.user = user;
-    }
-
-
-    @Override
-    public String toString() {
-        return "SysVolunteerEntity{" +
-                "volunteerId=" + volunteerId +
-                ", volunteerCode='" + volunteerCode + '\'' +
-                ", volunteerClass='" + volunteerClass + '\'' +
-                ", volunteerCollege='" + volunteerCollege + '\'' +
-                ", volunteerJoinTime=" + volunteerJoinTime +
-                ", volunteerEmail='" + volunteerEmail + '\'' +
-                ", volunteerName='" + volunteerName + '\'' +
-                ", volunteerPhone='" + volunteerPhone + '\'' +
-                ", volunteerSex=" + volunteerSex +
-                ", user=" + user +
-                '}';
     }
 }

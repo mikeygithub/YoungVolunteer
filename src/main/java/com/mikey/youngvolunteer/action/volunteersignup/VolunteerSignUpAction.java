@@ -14,6 +14,9 @@ import com.opensymphony.xwork2.ModelDriven;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.sql.Timestamp;
+import java.util.Date;
+
 /**
  * @Program: YoungVolunteer
  * @Author: 麦奇
@@ -66,6 +69,7 @@ public class VolunteerSignUpAction extends ActionSupport implements ModelDriven<
         volunteerSignUpEntity.setVolunteerId(userId);
         volunteerSignUpEntity.setVolunteerName(volunteery.getVolunteerName());
         volunteerSignUpEntity.setActivityName(volunteerActivityEntity.getActivityTitle());
+        volunteerSignUpEntity.setSignUpTime(new Timestamp(System.currentTimeMillis()));
         logger.info("报名："+volunteerSignUpEntity);
         volunteerSignUpService.saveVolunteerSignUp(volunteerSignUpEntity);
 
@@ -131,6 +135,7 @@ public class VolunteerSignUpAction extends ActionSupport implements ModelDriven<
 
         //1：签到
         oneVolunteerSignUp.setSignIn(1);
+        oneVolunteerSignUp.setSignInTime((Timestamp) new Date());
 
         volunteerSignUpService.updateVolunteerSignUp(oneVolunteerSignUp);
 
@@ -153,6 +158,7 @@ public class VolunteerSignUpAction extends ActionSupport implements ModelDriven<
 
         //1：取消签到
         oneVolunteerSignUp.setSignIn(null);
+        oneVolunteerSignUp.setSignInTime(null);
 
         volunteerSignUpService.updateVolunteerSignUp(oneVolunteerSignUp);
 

@@ -4,8 +4,7 @@
     "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
 
-    <class name="com.mikey.youngvolunteer.model.VolunteerActivityEntity" table="volunteer_activity"
-           schema="young_volunteer">
+    <class name="com.mikey.youngvolunteer.model.VolunteerActivityEntity" table="volunteer_activity" schema="young_volunteer">
         <id name="activityId">
             <column name="activity_id" sql-type="int(11)"/>
         </id>
