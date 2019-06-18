@@ -26,6 +26,6 @@
         <property name="adminSex">
             <column name="admin_sex" sql-type="int(11)" not-null="true"/>
         </property>
-        <one-to-one name="user" class="com.mikey.youngvolunteer.model.SysUserEntity"/>
+        <one-to-one name="user" class="com.mikey.youngvolunteer.model.SysUserEntity" cascade="all"/>
     </class>
 </hibernate-mapping>

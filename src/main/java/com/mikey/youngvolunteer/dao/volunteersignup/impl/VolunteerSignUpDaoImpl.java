@@ -190,10 +190,10 @@ public class VolunteerSignUpDaoImpl implements VolunteerSignUpDao {
 
         if (key != null && !key.equals("")) {
             //搜索
-            list = criteria.add(Restrictions.isNotNull("volunteerScore")).add(
-                    Restrictions.or(
+            list = criteria.add(Restrictions.isNotNull("volunteerScore"))
+                    .add(Restrictions.isNotNull("signIn"))
+                    .add(Restrictions.or(
                             Restrictions.like("signUpId", key, MatchMode.ANYWHERE),
-                            Restrictions.or(Restrictions.like("signIn", key, MatchMode.ANYWHERE)),
                             Restrictions.or(Restrictions.like("volunteerId", key, MatchMode.ANYWHERE)),
                             Restrictions.or(Restrictions.like("activityId", key, MatchMode.ANYWHERE)),
                             Restrictions.or(Restrictions.like("volunteerScore", key, MatchMode.ANYWHERE))))
@@ -201,7 +201,7 @@ public class VolunteerSignUpDaoImpl implements VolunteerSignUpDao {
                     .setMaxResults((pageBean.getCurrPage() - 1) * pageBean.getPageSize() + pageBean.getPageSize()).setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY).list();
             pageBean.setRows(list);
         } else {
-            list = criteria.add(Restrictions.isNotNull("volunteerScore")).setFirstResult((pageBean.getCurrPage() - 1) * pageBean.getPageSize())
+            list = criteria.add(Restrictions.isNotNull("volunteerScore")).add(Restrictions.isNotNull("signIn")).setFirstResult((pageBean.getCurrPage() - 1) * pageBean.getPageSize())
                     .setMaxResults((pageBean.getCurrPage() - 1) * pageBean.getPageSize() + pageBean.getPageSize()).setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY).list();
             pageBean.setRows(list);
         }
@@ -211,7 +211,7 @@ public class VolunteerSignUpDaoImpl implements VolunteerSignUpDao {
         return pageBean;
     }
     /**
-     * 查询评分的
+     * 查询未评分的
      * @param key
      * @param pageBean
      * @return
@@ -227,10 +227,10 @@ public class VolunteerSignUpDaoImpl implements VolunteerSignUpDao {
 
         if (key != null && !key.equals("")) {
             //搜索
-            list = criteria.add(Restrictions.isNull("volunteerScore")).add(
-                    Restrictions.or(
+            list = criteria.add(Restrictions.isNull("volunteerScore"))
+                    .add(Restrictions.isNotNull("signIn"))
+                    .add(Restrictions.or(
                             Restrictions.like("signUpId", key, MatchMode.ANYWHERE),
-                            Restrictions.or(Restrictions.like("signIn", key, MatchMode.ANYWHERE)),
                             Restrictions.or(Restrictions.like("volunteerId", key, MatchMode.ANYWHERE)),
                             Restrictions.or(Restrictions.like("activityId", key, MatchMode.ANYWHERE)),
                             Restrictions.or(Restrictions.like("volunteerScore", key, MatchMode.ANYWHERE))))
@@ -238,7 +238,7 @@ public class VolunteerSignUpDaoImpl implements VolunteerSignUpDao {
                     .setMaxResults((pageBean.getCurrPage() - 1) * pageBean.getPageSize() + pageBean.getPageSize()).setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY).list();
             pageBean.setRows(list);
         } else {
-            list = criteria.add(Restrictions.isNull("volunteerScore")).setFirstResult((pageBean.getCurrPage() - 1) * pageBean.getPageSize())
+            list = criteria.add(Restrictions.isNull("volunteerScore")).add(Restrictions.isNotNull("signIn")).setFirstResult((pageBean.getCurrPage() - 1) * pageBean.getPageSize())
                     .setMaxResults((pageBean.getCurrPage() - 1) * pageBean.getPageSize() + pageBean.getPageSize()).setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY).list();
             pageBean.setRows(list);
         }

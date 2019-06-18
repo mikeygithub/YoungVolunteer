@@ -14,7 +14,7 @@
         <property name="memberName">
             <column name="member_name" sql-type="varchar(255)"/>
         </property>
-        <one-to-one name="user" class="com.mikey.youngvolunteer.model.SysUserEntity"/>
-        <one-to-one name="college" class="com.mikey.youngvolunteer.model.CollegesEntity"/>
+        <one-to-one name="user" class="com.mikey.youngvolunteer.model.SysUserEntity" cascade="all"/>
+        <one-to-one name="college" class="com.mikey.youngvolunteer.model.CollegesEntity" cascade="all"/>
     </class>
 </hibernate-mapping>

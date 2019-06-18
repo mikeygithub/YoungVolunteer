@@ -82,7 +82,7 @@ layui.use(['form','layer','table','laytpl'],function(){
                 newsId.push(data[i].id);
             }
             layer.confirm('确定删除选中记录？', {icon: 3, title: '提示信息'}, function (index) {
-                $.post("../../../biz/member_delete.action",{
+                $.post("../../../biz/member_deleteBatch.action",{
                     ids : newsId.join(',') //将需要删除的newsId作为参数传入
                 },function(data){
                     if (data.code===0){
@@ -128,7 +128,7 @@ layui.use(['form','layer','table','laytpl'],function(){
             });
         }else if(layEvent === 'del'){ //删除
             layer.confirm('确定删除此记录？',{icon:3, title:'提示信息'},function(index){
-                $.get("../../../colleges/member_delete.action",{
+                $.get("../../../biz/member_delete.action",{
                     id : data.id  //将需要删除的newsId作为参数传入
                 },function(data){
                     if (data.code === 0){
