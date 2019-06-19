@@ -15,5 +15,10 @@
         <property name="associationName">
             <column name="association_name" sql-type="varchar(255)"/>
         </property>
+        <one-to-one name="colleges" class="com.mikey.youngvolunteer.model.CollegesEntity"/>
+        <set name="member" inverse="true">
+            <key/>
+            <one-to-many not-found="ignore" class="com.mikey.youngvolunteer.model.AssociationMemberEntity"/>
+        </set>
     </class>
 </hibernate-mapping>

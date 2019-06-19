@@ -6,7 +6,7 @@ import javax.persistence.*;
  * @Program: Ped_Moni_Gen
  * @Author: 麦奇
  * @Email： 1625017540@qq.com
- * @Create: 2019-06-18 15:52
+ * @Create: 2019-06-19 09:16
  * @Describe：
  **/
 @Entity
@@ -16,7 +16,7 @@ public class AssociationMemberEntity {
     private String memberCode;
     private String memberName;
     private SysUserEntity user;
-    private CollegesEntity college;
+    private VolunteerAssociationEntity association;
 
     @Id
     @Column(name = "id", nullable = false)
@@ -29,7 +29,7 @@ public class AssociationMemberEntity {
     }
 
     @Basic
-    @Column(name = "member_code", nullable = false, length = 255)
+    @Column(name = "member_code", nullable = true, length = 255)
     public String getMemberCode() {
         return memberCode;
     }
@@ -39,7 +39,7 @@ public class AssociationMemberEntity {
     }
 
     @Basic
-    @Column(name = "member_name", nullable = false, length = 255)
+    @Column(name = "member_name", nullable = true, length = 255)
     public String getMemberName() {
         return memberName;
     }
@@ -70,7 +70,7 @@ public class AssociationMemberEntity {
         return result;
     }
 
-    @OneToOne(mappedBy = "association_member")
+    @OneToOne
     public SysUserEntity getUser() {
         return user;
     }
@@ -79,12 +79,23 @@ public class AssociationMemberEntity {
         this.user = user;
     }
 
-    @OneToOne(mappedBy = "ossocation")
-    public CollegesEntity getCollege() {
-        return college;
+    @ManyToOne
+    public VolunteerAssociationEntity getAssociation() {
+        return association;
     }
 
-    public void setCollege(CollegesEntity college) {
-        this.college = college;
+    public void setAssociation(VolunteerAssociationEntity association) {
+        this.association = association;
+    }
+
+    @Override
+    public String toString() {
+        return "AssociationMemberEntity{" +
+                "id=" + id +
+                ", memberCode='" + memberCode + '\'' +
+                ", memberName='" + memberName + '\'' +
+                ", user=" + user +
+                ", association=" + association +
+                '}';
     }
 }

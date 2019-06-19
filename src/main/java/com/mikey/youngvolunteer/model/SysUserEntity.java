@@ -6,7 +6,7 @@ import javax.persistence.*;
  * @Program: Ped_Moni_Gen
  * @Author: 麦奇
  * @Email： 1625017540@qq.com
- * @Create: 2019-06-18 15:52
+ * @Create: 2019-06-19 09:16
  * @Describe：
  **/
 @Entity
@@ -18,9 +18,9 @@ public class SysUserEntity {
     private String userName;
     private Integer roleType;
     private int userAvailable;
+    private AssociationMemberEntity association_member;
     private SysAdminEntity admin;
     private SysVolunteerEntity volunteer;
-    private AssociationMemberEntity association_member;
 
     @Id
     @Column(name = "user_id", nullable = false)
@@ -111,7 +111,16 @@ public class SysUserEntity {
         return result;
     }
 
-    @OneToOne
+    @OneToOne(mappedBy = "user")
+    public AssociationMemberEntity getAssociation_member() {
+        return association_member;
+    }
+
+    public void setAssociation_member(AssociationMemberEntity association_member) {
+        this.association_member = association_member;
+    }
+
+    @OneToOne(mappedBy = "user")
     public SysAdminEntity getAdmin() {
         return admin;
     }
@@ -120,7 +129,7 @@ public class SysUserEntity {
         this.admin = admin;
     }
 
-    @OneToOne
+    @OneToOne(mappedBy = "user")
     public SysVolunteerEntity getVolunteer() {
         return volunteer;
     }
@@ -129,12 +138,18 @@ public class SysUserEntity {
         this.volunteer = volunteer;
     }
 
-    @OneToOne
-    public AssociationMemberEntity getAssociation_member() {
-        return association_member;
-    }
-
-    public void setAssociation_member(AssociationMemberEntity association_member) {
-        this.association_member = association_member;
+    @Override
+    public String toString() {
+        return "SysUserEntity{" +
+                "userId=" + userId +
+                ", loginAccount='" + loginAccount + '\'' +
+                ", loginPassword='" + loginPassword + '\'' +
+                ", userName='" + userName + '\'' +
+                ", roleType=" + roleType +
+                ", userAvailable=" + userAvailable +
+                ", association_member=" + association_member +
+                ", admin=" + admin +
+                ", volunteer=" + volunteer +
+                '}';
     }
 }

@@ -1,12 +1,13 @@
 package com.mikey.youngvolunteer.model;
 
 import javax.persistence.*;
+import java.util.Set;
 
 /**
  * @Program: Ped_Moni_Gen
  * @Author: 麦奇
  * @Email： 1625017540@qq.com
- * @Create: 2019-06-18 15:52
+ * @Create: 2019-06-19 09:16
  * @Describe：
  **/
 @Entity
@@ -15,6 +16,8 @@ public class VolunteerAssociationEntity {
     private int id;
     private String associationCode;
     private String associationName;
+    private Set<AssociationMemberEntity> member;
+    private CollegesEntity colleges;
 
     @Id
     @Column(name = "id", nullable = false)
@@ -70,12 +73,21 @@ public class VolunteerAssociationEntity {
         return result;
     }
 
-    @Override
-    public String toString() {
-        return "VolunteerAssociationEntity{" +
-                "id=" + id +
-                ", associationCode='" + associationCode + '\'' +
-                ", associationName='" + associationName + '\'' +
-                '}';
+    @OneToMany(mappedBy = "association")
+    public Set<AssociationMemberEntity> getMember() {
+        return member;
+    }
+
+    public void setMember(Set<AssociationMemberEntity> member) {
+        this.member = member;
+    }
+
+    @OneToOne
+    public CollegesEntity getColleges() {
+        return colleges;
+    }
+
+    public void setColleges(CollegesEntity colleges) {
+        this.colleges = colleges;
     }
 }

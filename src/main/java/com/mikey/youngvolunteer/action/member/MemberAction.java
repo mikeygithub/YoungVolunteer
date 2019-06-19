@@ -6,6 +6,7 @@ import com.mikey.youngvolunteer.model.CollegesEntity;
 import com.mikey.youngvolunteer.model.SysUserEntity;
 import com.mikey.youngvolunteer.service.colleges.CollegesService;
 import com.mikey.youngvolunteer.service.member.MemberService;
+import com.mikey.youngvolunteer.service.sysuser.SysUserService;
 import com.mikey.youngvolunteer.vo.R;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
@@ -24,6 +25,8 @@ public class MemberAction extends ActionSupport implements ModelDriven<Associati
 
     @Autowired
     private MemberService memberService;
+    @Autowired
+    private SysUserService sysUserService;
     //日志
     private static Logger logger = Logger.getLogger(AssociationMemberEntity.class);
     //模型驱动
@@ -41,12 +44,15 @@ public class MemberAction extends ActionSupport implements ModelDriven<Associati
     //批量删除id
     private String ids;
 
-    /////////////////////////////////////////
 
     /**
      * 添加
      */
     public String save() {
+
+
+        logger.info("ASS:"+associationMemberEntity);
+        memberService.save(associationMemberEntity);
 
         SysUserEntity sysUserEntity = new SysUserEntity();
         sysUserEntity.setUserId((int) System.currentTimeMillis());
@@ -56,9 +62,8 @@ public class MemberAction extends ActionSupport implements ModelDriven<Associati
         sysUserEntity.setUserName(associationMemberEntity.getMemberName());
         sysUserEntity.setUserAvailable(1);
 
-        associationMemberEntity.setUser(sysUserEntity);
-
-        memberService.save(associationMemberEntity);
+        sysUserEntity.setAssociation_member(associationMemberEntity);
+        sysUserService.saveUser(sysUserEntity);
 
         r = R.ok();
 
@@ -193,6 +198,5 @@ public class MemberAction extends ActionSupport implements ModelDriven<Associati
     public void setIds(String ids) {
         this.ids = ids;
     }
-/////////////////////////////////////////
 
 }

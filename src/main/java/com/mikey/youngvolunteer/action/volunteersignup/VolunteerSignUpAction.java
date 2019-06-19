@@ -135,7 +135,7 @@ public class VolunteerSignUpAction extends ActionSupport implements ModelDriven<
 
         //1：签到
         oneVolunteerSignUp.setSignIn(1);
-        oneVolunteerSignUp.setSignInTime((Timestamp) new Date());
+        oneVolunteerSignUp.setSignInTime(new Timestamp(System.currentTimeMillis()));
 
         volunteerSignUpService.updateVolunteerSignUp(oneVolunteerSignUp);
 

@@ -6,7 +6,7 @@ import javax.persistence.*;
  * @Program: Ped_Moni_Gen
  * @Author: 麦奇
  * @Email： 1625017540@qq.com
- * @Create: 2019-06-18 15:52
+ * @Create: 2019-06-19 09:16
  * @Describe：
  **/
 @Entity
@@ -15,7 +15,7 @@ public class CollegesEntity {
     private int collegesId;
     private String collegesName;
     private String collegesCode;
-    private AssociationMemberEntity ossocation;
+    private VolunteerAssociationEntity association;
 
     @Id
     @Column(name = "colleges_id", nullable = false)
@@ -69,12 +69,12 @@ public class CollegesEntity {
         return result;
     }
 
-    @OneToOne
-    public AssociationMemberEntity getOssocation() {
-        return ossocation;
+    @OneToOne(mappedBy = "colleges")
+    public VolunteerAssociationEntity getAssociation() {
+        return association;
     }
 
-    public void setOssocation(AssociationMemberEntity ossocation) {
-        this.ossocation = ossocation;
+    public void setAssociation(VolunteerAssociationEntity association) {
+        this.association = association;
     }
 }
