@@ -119,6 +119,9 @@ public class ActivityDaoImpl implements ActivityDao {
                     .setMaxResults((pageBean.getCurrPage() - 1) * pageBean.getPageSize() + pageBean.getPageSize()).setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY).list());
         }
 
+        pageBean.setTotal(Math.toIntExact((Long) criteria.setProjection(Projections.rowCount()).uniqueResult()));
+
+
         session.close();
 
         return pageBean;

@@ -73,7 +73,7 @@ public class VolunteerAssociationEntity {
         return result;
     }
 
-    @OneToMany(mappedBy = "association")
+    @OneToMany(mappedBy = "association",fetch = FetchType.EAGER)
     public Set<AssociationMemberEntity> getMember() {
         return member;
     }
@@ -82,7 +82,7 @@ public class VolunteerAssociationEntity {
         this.member = member;
     }
 
-    @OneToOne
+    @OneToOne(fetch = FetchType.EAGER)
     public CollegesEntity getColleges() {
         return colleges;
     }
