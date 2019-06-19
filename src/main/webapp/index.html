@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+    <head>
+        <meta charset="utf-8">
+        <title>青年志愿者信息管理系统</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="">
+        <meta name="author" content="">
+
+        <!-- CSS -->
+        <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=PT+Sans:400,700'>
+        <link rel="stylesheet" href="./css/reset.css">
+        <link rel="stylesheet" href="./css/supersized.css">
+        <link rel="stylesheet" href="./css/style.css">
+        <link rel="icon" href="./images/favicon.ico">
+        <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+        <!--[if lt IE 9]>
+            <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+
+    </head>
+
+    <body>
+
+        <div class="page-container">
+            <h1>青年志愿者信息管理系统</h1>
+            <form action="" method="post">
+                <table>
+                    <tr>
+                        <td colspan="2"><input type="text" name="username" id="loginAccount" class="username loginPassword" autocomplete="off"  placeholder="账号" lay-verify="required"></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"><input type="password" name="password"  id="loginPassword" class="password loginPassword" autocomplete="off"  placeholder="密码" lay-verify="required"></td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" placeholder="请输入验证码" autocomplete="off" id="code" lay-verify="required" style="width: auto"></td>
+                        <td><canvas id="canvas" width="100" height="30"></canvas></td>
+                    </tr>
+                </table>
+
+
+                <button class="layui-btn layui-block" lay-filter="login" lay-submit>登录</button>
+                <div class="error"><span>+</span></div>
+            </form>
+            <div class="connect">
+                <!--<p>Or connect with:</p>-->
+                <!--<p>-->
+                    <!--<a class="facebook" href=""></a>-->
+                    <!--<a class="twitter" href=""></a>-->
+                <!--</p>-->
+            </div>
+        </div>
+        <div align="center" style="padding-bottom:  100px"><a href="#" target="_blank">Copyright @2019 麦奇</a></div>
+
+        <!-- Javascript -->
+        <script src="./js/jquery-1.8.2.min.js"></script>
+        <script src="./js/supersized.3.2.7.min.js"></script>
+        <script src="./js/supersized-init.js"></script>
+        <script src="./js/scripts.js"></script>
+        <script type="text/javascript" src="./layui/layui.js"></script>
+        <script type="text/javascript" src="./js/login.js"></script>
+        <script type="text/javascript" src="./js/cache.js"></script>
+    </body>
+
+</html>
+

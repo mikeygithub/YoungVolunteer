@@ -147,7 +147,7 @@ layui.use(['bodyTab','form','element','layer','jquery'],function(){
 				layer.close(index);
 				layer.msg("退出登入成功！");
 			}, 2000);
-			window.location.href = "/YoungVolunteer_war/index.jsp";
+			window.location.href = "/YoungVolunteer_war/index.html";
 		});
 	})
 })
